@@ -1,0 +1,15 @@
+
+# ignore dir
+#build/
+lib/*.txt
+lib/Livox-SDK
+lib/livox_detection
+lib/OpenPyLivox
+piao/
+pcd/
+doc/
+
+#whitelist
+!build/notes.txt
+
+

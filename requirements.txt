@@ -1,0 +1,14 @@
+flask
+flasgger
+# pdfplumber
+# werkzeug
+# # opencv-python
+# opencv-python-headless
+# open3d
+# openpyxl
+# numpy==1.20.3
+# websockets
+# # exchangelib
+# paho-mqtt
+# websockets_routes
+pybluez==0.22

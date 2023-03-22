@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="https://cdn.lyshark.com/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<ul id="content"></ul>
+<form class="form">
+    <input type="text" placeholder="请输入发送的消息" class="message" id="message"/>
+    <input type="button" value="连接" id="connect" class="connect"/>
+    <input type="button" value="发送" id="send" class="connect"/>
+</form>
+
+<script type="text/javascript">
+    var oUl=document.getElementById('content');
+    var oConnect=document.getElementById('connect');
+    var oSend=document.getElementById('send');
+    var websocket=null;
+    oConnect.onclick=function(){
+        websocket=new WebSocket('ws://127.0.0.1:10083');
+
+         websocket.onopen=function(){
+             oUl.innerHTML+="<li>客户端已连接</li>";
+         }
+        websocket.onmessage=function(evt){
+            oUl.innerHTML+="<li>"+evt.data+"</li>";
+        }
+        websocket.onclose=function(){
+            oUl.innerHTML+="<li>客户端已断开连接</li>";
+        };
+        websocket.onerror=function(evt){
+            oUl.innerHTML+="<li>"+evt.data+"</li>";
+        };
+    };
+    oSend.onclick=function(){
+        if(websocket){
+             websocket.send($("#message").val())
+        }
+    }
+</script>
+</body>
+</html>
